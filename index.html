@@ -16,178 +16,96 @@ body {
     margin: 0;
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
-    border: 6px solid #e8d9b8; /* 고급 골드 테두리 */
+    border: 6px solid #e8d9b8;
     min-height: 100vh;
     background-color: #fff;
-    /* 은은한 골드 배경 라인 패턴 */
+    /* 고급 골드 배경: 라인 + 은은한 원형 그라데이션 */
     background-image:
-      linear-gradient(to right, rgba(232,217,184,0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(232,217,184,0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgba(232,217,184,0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(232,217,184,0.08) 1px, transparent 1px),
+      radial-gradient(circle at top left, rgba(232,217,184,0.02), transparent 70%),
+      radial-gradient(circle at bottom right, rgba(232,217,184,0.02), transparent 70%);
     background-size: 20px 20px;
 }
 
-/* 공통 섹션 */
-.section {
-    padding: 40px 20px;
-    text-align: center;
-}
+.section { padding: 40px 20px; text-align: center; }
+.title { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; }
+.subtitle { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
 
-.title {
+/* 메인 이미지 + 금박 띠 */
+.main-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 400px; /* 글씨와 겹치지 않도록 */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.gold-strip { height: 8px; background-color: #e8d9b8; width: 100%; }
+.main-image { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* 초대 텍스트 */
+.invite-text {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 2.5rem;
+    color: #e8d9b8;
+    text-shadow: 0 0 10px rgba(0,0,0,0.15);
+    opacity: 0;
+    animation: fadeInInvite 2s forwards 0.5s;
+    text-align: center;
+    margin-top: 15px;
     margin-bottom: 30px;
 }
-
-/* 메인 이미지 전체 보이게 */
-.main-image {
-    width: 100%;
-    height: auto;
-    max-height: 650px;
-    object-fit: contain;
-    background-color: #fafafa;
-    display: block;
-    padding: 10px 0;
+@keyframes fadeInInvite {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* 감성 문구 애니메이션 */
-.info-box {
-    background: #fafafa;
-    padding: 25px;
-    border-radius: 12px;
-    margin: 20px auto;
-    max-width: 480px;
-    line-height: 1.7;
-    font-size: 1rem;
-    opacity: 0;
-    animation: fadeInText 2s forwards;
-    animation-delay: 0.5s;
-}
+/* 감성 문구 */
+.info-box { background: #fafafa; padding: 25px; border-radius: 12px; margin: 20px auto; max-width: 480px; line-height: 1.7; font-size: 1rem; opacity: 0; animation: fadeInText 2s forwards; animation-delay: 1.5s; }
+@keyframes fadeInText { 0% { opacity:0; transform:translateY(20px); } 100% { opacity:1; transform:translateY(0); } }
 
-@keyframes fadeInText {
-    0% { opacity: 0; transform: translateY(20px);}
-    100% { opacity: 1; transform: translateY(0);}
-}
+.section-title { font-size: 1.6rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+.section-title-line { width: 70px; height: 3px; background: #e8d9b8; margin: 10px auto 30px; border-radius: 2px; }
 
-/* 섹션 제목 + 금색 라인 */
-.section-title {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
-}
-.section-title-line {
-    width: 70px;
-    height: 3px;
-    background: #e8d9b8;
-    margin: 10px auto 30px;
-    border-radius: 2px;
-}
+.account-box { background: #fff; border:1px solid #eee; border-radius:12px; padding:20px; margin:15px auto; max-width:500px; text-align:left; font-family: 'Noto Serif KR', serif; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
+.account-box h3 { margin:0 0 15px; font-size:1.3rem; font-weight:600; font-family:'Playfair Display', serif; color:#3d3d3d; }
+.parent-line { display:flex; justify-content: space-between; align-items: center; font-size: 1rem; margin: 6px 0; }
+.account-number { font-size:1.05rem; font-weight:600; margin-top:4px; }
 
-/* 혼주 글씨체 업그레이드 */
-.account-box {
-    background: #ffffff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 15px auto;
-    max-width: 500px;
-    text-align: left;
-    font-family: 'Noto Serif KR', serif;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-}
+.map-button, .share-btn { display:inline-block; margin-top:15px; padding:12px 20px; border-radius:8px; font-size:0.95rem; text-decoration:none; }
+.map-button { background:black; color:white; }
+.share-area { margin-top:40px; }
+.share-btn { background:#e8d9b8; color:black; margin:5px; border:none; cursor:pointer; }
 
-.account-box h3 {
-    margin: 0 0 15px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    font-family: 'Playfair Display', serif;
-    color: #3d3d3d;
-}
+.swiper { width:95%; max-width:500px; height:auto; border-radius:12px; position: relative; }
+.swiper-slide img { width:100%; height:100%; object-fit:cover; border-radius:12px; }
+.swiper-button-next, .swiper-button-prev { color: #e8d9b8; }
 
-/* 부모님 이름 + 신랑·신부 정보 오른쪽 배치 */
-.parent-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
-    margin: 6px 0;
-}
-
-.account-number {
-    margin-top: 10px;
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
-/* 버튼 */
-.map-button, .share-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    text-decoration: none;
-}
-
-/* 지도 버튼 */
-.map-button {
-    background: black;
-    color: white;
-}
-
-/* 공유 버튼 */
-.share-area {
-    margin-top: 40px;
-}
-.share-btn {
-    background: #e8d9b8;
-    color: black;
-    margin: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-/* gallery */
-.swiper {
-    width: 95%;
-    max-width: 500px;
-    height: 380px;
-    border-radius: 12px;
-}
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.footer {
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.85rem;
-    color: #aaa;
-}
+.footer { margin-top:40px; padding:20px; font-size:0.85rem; color:#aaa; }
 </style>
 </head>
 
 <body>
 
-<!-- 메인 이미지 -->
-<img src="main.jpg" class="main-image" alt="main">
+<!-- 메인 이미지 + 금박 띠 -->
+<div class="main-image-wrapper">
+    <div class="gold-strip"></div> <!-- 위 금박 띠 -->
+    <img src="main.jpg" class="main-image" alt="main">
+    <div class="gold-strip"></div> <!-- 아래 금박 띠 -->
+</div>
+
+<!-- 초대 텍스트 -->
+<div class="invite-text">초대합니다</div>
 
 <!-- 인사말 -->
 <div class="section">
     <div class="title">정환 & 지영</div>
     <div class="subtitle">2026년 2월 28일 (토) 오후 2시 30분</div>
-
     <div class="info-box">
-        기쁨이 가득한 날,<br>
-        서로의 삶이 하나로 이어지는 순간을<br>
-        소중한 여러분과 함께하고 싶습니다.
+        정다운 마음으로 여러분을 초대하며,<br>
+        환하게 빛나는 순간을 함께 나누고,<br>
+        지극한 사랑으로 서로를 이어가는 날,<br>
+        영원히 기억될 행복한 시간을 만들어갑니다.
     </div>
 </div>
 
@@ -195,11 +113,7 @@ body {
 <div class="section">
     <div class="section-title">Wedding Information</div>
     <div class="section-title-line"></div>
-
-    <p style="font-size: 1.1rem; line-height: 1.8;">
-        📍 구로디지털단지 엘컨벤션<br>
-        🕑 2026년 2월 28일 토요일 오후 2시 30분
-    </p>
+    <p style="font-size:1.1rem; line-height:1.8;">📍 구로디지털단지 엘컨벤션<br>🕑 2026년 2월 28일 토요일 오후 2시 30분</p>
     <a class="map-button" href="https://naver.me/xf5MWnIC" target="_blank">네이버 지도 열기</a>
 </div>
 
@@ -207,7 +121,6 @@ body {
 <div class="section">
     <div class="section-title">Gallery</div>
     <div class="section-title-line"></div>
-
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="g1.jpg"></div>
@@ -218,10 +131,12 @@ body {
             <div class="swiper-slide"><img src="g6.jpg"></div>
         </div>
         <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </div>
 
-<!-- 혼주 & 계좌 정보 (네가 준 코드 반영) -->
+<!-- 혼주 & 계좌 정보 -->
 <div class="section">
     <div class="section-title">마음 전하실 곳</div>
     <div class="section-title-line"></div>
@@ -229,17 +144,15 @@ body {
     <div class="account-box">
         <h3>신랑측</h3>
         <div class="parent-line"><span>아버지 백청흠</span><span>신랑 백정환</span></div>
-        <div class="parent-line"><span>어머니 유옥자</span>
-        <span><p class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</p></span></div>
-        
+        <div class="parent-line"><span>어머니 유옥자</span></div>
+        <div class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</div>
     </div>
 
     <div class="account-box">
         <h3>신부측</h3>
         <div class="parent-line"><span>아버지 윤석민</span><span>신부 윤지영</span></div>
-        <div class="parent-line"><span>어머니 김경미</span>
-        <span><p class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)</p></span></div>
-        
+        <div class="parent-line"><span>어머니 김경미</span></div>
+        <div class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)</div>
     </div>
 </div>
 
@@ -252,15 +165,19 @@ body {
 
 <div class="footer">© 2026 JH & JY Wedding Invitation</div>
 
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
 var swiper = new Swiper(".swiper", {
-    loop: true,
-    pagination: { el: ".swiper-pagination" },
+    loop:true,
+    slidesPerView:1,
+    spaceBetween:10,
+    grabCursor:true,
+    autoplay: { delay:3000, disableOnInteraction:false },
+    pagination:{ el:".swiper-pagination" },
+    navigation:{ nextEl:".swiper-button-next", prevEl:".swiper-button-prev" },
 });
+function copyURL() { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }
+</script>
 
-/* 링크 복사 */
-function copyURL() {
-    navigator.clipboard.writeTe
+</body>
+</html>
