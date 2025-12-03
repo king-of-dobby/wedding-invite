@@ -221,7 +221,7 @@ body {
     </div>
 </div>
 
-<!-- 혼주 & 계좌 정보 -->
+<!-- 혼주 & 계좌 정보 (네가 준 코드 반영) -->
 <div class="section">
     <div class="section-title">마음 전하실 곳</div>
     <div class="section-title-line"></div>
@@ -230,7 +230,7 @@ body {
         <h3>신랑측</h3>
         <div class="parent-line"><span>아버지 백청흠</span><span>신랑 백정환</span></div>
         <div class="parent-line"><span>어머니 유옥자</span>
-	<span><p class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</p></span></div>
+        <span><p class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</p></span></div>
         
     </div>
 
@@ -247,7 +247,6 @@ body {
 <div class="section share-area">
     <div class="section-title">공유하기</div>
     <div class="section-title-line"></div>
-    <button class="share-btn" onclick="shareKakao()">카카오톡 공유</button>
     <button class="share-btn" onclick="copyURL()">링크 복사</button>
 </div>
 
@@ -264,16 +263,4 @@ var swiper = new Swiper(".swiper", {
 
 /* 링크 복사 */
 function copyURL() {
-    navigator.clipboard.writeText(window.location.href);
-    alert("링크가 복사되었습니다!");
-}
-
-/* 카카오톡 공유 */
-function shareKakao() {
-    const url = "https://king-of-dobby.github.io/wedding-invite/";
-    window.open(`https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(url)}`);
-}
-</script>
-
-</body>
-</html>
+    navigator.clipboard.writeTe
