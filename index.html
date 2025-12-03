@@ -40,8 +40,8 @@ body {
 .gold-strip { height: 8px; background-color:#e8d9b8; width:100%; }
 .main-image {
     width: 100%;
-    max-height: 520px;     /* 약간 확대 */
-    object-fit: cover;     /* 절반 이하만 잘리며 전체 느낌 유지 */
+    max-height: 520px;
+    object-fit: cover;
     display: block;
 }
 
@@ -59,19 +59,21 @@ body {
 }
 @keyframes fadeInInvite {0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
 
-/* 인사말 */
+/* 인사말 — 글씨 조금 더 작게 + 고급 박스 */
 .info-box {
-    background:#fafafa;
-    padding:25px;
-    border-radius:12px;
+    background:#f7f5ef;
+    padding:28px;
+    border-radius:14px;
     margin:20px auto;
     max-width:480px;
     line-height:1.8;
-    font-size:1rem;
+    font-size:0.92rem; /* 글씨 더 작게 */
     opacity:0;
     animation:fadeInText 2s forwards;
     animation-delay:1.5s;
     text-align:left;
+    border:1px solid #e1d7c6;
+    box-shadow:0 0 10px rgba(0,0,0,0.05);
 }
 @keyframes fadeInText {0%{opacity:0; transform:translateY(20px);}100%{opacity:1; transform:translateY(0);}}
 
@@ -127,11 +129,12 @@ body {
 }
 .swiper-slide img {
     width:100%;
-    max-height:480px;   /* 원본에 가까운 큰 크기 */
+    max-height:480px;
     object-fit:contain;
     border-radius:12px;
 }
-.swiper-button-next, .swiper-button-prev { color:#e8d9b8; }
+/* 좌우 화살표 제거 */
+.swiper-button-next, .swiper-button-prev { display:none; }
 
 /* 버튼 */
 .map-button, .share-btn {
@@ -200,8 +203,6 @@ body {
             <div class="swiper-slide"><img src="g6.jpg"></div>
         </div>
         <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
     </div>
 </div>
 
@@ -215,8 +216,11 @@ body {
         <div class="parent-line"><span>아버지 백청흠</span><span>신랑 백정환</span></div>
         <div class="parent-line"><span>어머니 유옥자</span></div>
 
-        <div class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</div>
-        <button class="account-btn" onclick="copyNumber('07850204095454')">계좌번호 복사</button>
+        <div class="account-number" style="display:none;" id="account1">
+            국민은행 078502-04-095454<br>(예금주: 백정환)
+        </div>
+        <button class="account-btn" onclick="toggleAccount('account1')">계좌 보기</button>
+        <button class="account-btn" onclick="copyNumber('07850204095454')">복사</button>
     </div>
 
     <div class="account-box">
@@ -224,38 +228,23 @@ body {
         <div class="parent-line"><span>아버지 윤석민</span><span>신부 윤지영</span></div>
         <div class="parent-line"><span>어머니 김경미</span></div>
 
-        <div class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)</div>
-        <button class="account-btn" onclick="copyNumber('1002088930102')">계좌번호 복사</button>
+        <div class="account-number" style="display:none;" id="account2">
+            우리은행 1002-088-930102<br>(예금주: 윤지영)
+        </div>
+        <button class="account-btn" onclick="toggleAccount('account2')">계좌 보기</button>
+        <button class="account-btn" onclick="copyNumber('1002088930102')">복사</button>
     </div>
 </div>
 
-<!-- 공유 버튼 -->
-<div class="section share-area">
-    <div class="section-title">공유하기</div>
-    <div class="section-title-line"></div>
-    <button class="share-btn" onclick="copyURL()">링크 복사</button>
-</div>
-
-<div class="footer">© 2026 JH & JY Wedding Invitation</div>
-
-<!-- Swiper -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
-var swiper = new Swiper(".swiper", {
-    loop:true,
-    slidesPerView:1,
-    spaceBetween:10,
-    grabCursor:true,
-    autoplay: { delay:3000, disableOnInteraction:false },
-    pagination:{ el:".swiper-pagination" },
-    navigation:{ nextEl:".swiper-button-next", prevEl:".swiper-button-prev" },
-});
-
-/* URL 복사 */
-function copyURL() {
-    navigator.clipboard.writeText(window.location.href);
-    alert("링크가 복사되었습니다!");
+/* 계좌 보기/숨기기 */
+function toggleAccount(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === "none") {
+        el.style.display = "block";
+    } else {
+        el.style.display = "none";
+    }
 }
 
 /* 계좌번호 숫자만 복사 */
@@ -264,6 +253,7 @@ function copyNumber(num) {
     alert("계좌번호가 복사되었습니다!");
 }
 </script>
+
 
 </body>
 </html>
