@@ -92,9 +92,9 @@ body {
 .share-area { margin-top:40px; }
 .share-btn { background:#e8d9b8; color:black; margin:5px; border:none; cursor:pointer; }
 
-/* 갤러리 확대 */
-.swiper { width:95%; max-width:700px; height:450px; border-radius:12px; position:relative; margin:auto; }
-.swiper-slide img { width:100%; height:100%; object-fit:contain; border-radius:12px; }
+/* 갤러리 확대 + 클릭 시 원본 */
+.swiper { width:95%; max-width:700px; height:500px; border-radius:12px; position:relative; margin:auto; }
+.swiper-slide img { width:100%; height:100%; object-fit:contain; border-radius:12px; cursor:pointer; }
 .swiper-button-next, .swiper-button-prev { color:#e8d9b8; }
 
 .footer { margin-top:40px; padding:20px; font-size:0.85rem; color:#aaa; }
@@ -150,12 +150,12 @@ body {
     <div class="section-title-line"></div>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="g1.jpg"></div>
-            <div class="swiper-slide"><img src="g2.jpg"></div>
-            <div class="swiper-slide"><img src="g3.jpg"></div>
-            <div class="swiper-slide"><img src="g4.jpg"></div>
-            <div class="swiper-slide"><img src="g5.jpg"></div>
-            <div class="swiper-slide"><img src="g6.jpg"></div>
+            <div class="swiper-slide"><img src="g1.jpg" onclick="openImage(this.src)"></div>
+            <div class="swiper-slide"><img src="g2.jpg" onclick="openImage(this.src)"></div>
+            <div class="swiper-slide"><img src="g3.jpg" onclick="openImage(this.src)"></div>
+            <div class="swiper-slide"><img src="g4.jpg" onclick="openImage(this.src)"></div>
+            <div class="swiper-slide"><img src="g5.jpg" onclick="openImage(this.src)"></div>
+            <div class="swiper-slide"><img src="g6.jpg" onclick="openImage(this.src)"></div>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
@@ -232,6 +232,10 @@ function copyAccount(btn) {
     const text = btn.parentElement.innerText.replace("복사","").trim();
     navigator.clipboard.writeText(text);
     alert("계좌번호가 복사되었습니다!");
+}
+
+function openImage(src){
+    window.open(src, "_blank");
 }
 </script>
 
