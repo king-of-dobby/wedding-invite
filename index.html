@@ -129,10 +129,10 @@ body {
     <div class="title">정환 & 지영</div>
     <div class="subtitle">2026년 2월 28일 (토) 오후 2시 30분</div>
     <div class="info-box">
-        정다운 마음으로 여러분을 초대하며,<br>
-        환하게 빛나는 순간을 함께 나누고,<br>
-        지극한 사랑으로 서로를 이어가는 날,<br>
-        영원히 기억될 행복한 시간을 만들어갑니다.
+        정다운 마음으로 여러분을 진심으로 초대하며,<br>
+        환하게 빛나는 행복의 순간을 함께 나누고,<br>
+        지극한 사랑으로 서로의 삶을 이어가는 날,<br>
+        영원히 기억될 소중한 시간을 만들어갑니다.
     </div>
 </div>
 
@@ -174,7 +174,7 @@ body {
         <div class="parent-line"><span>어머니 유옥자</span>
             <button class="show-btn" onclick="toggleAccount(this)">계좌 보기</button>
         </div>
-        <div class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)
+        <div class="account-number">07850204095454
             <button class="show-btn" onclick="copyAccount(this)">복사</button>
         </div>
     </div>
@@ -185,7 +185,7 @@ body {
         <div class="parent-line"><span>어머니 김경미</span>
             <button class="show-btn" onclick="toggleAccount(this)">계좌 보기</button>
         </div>
-        <div class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)
+        <div class="account-number">1002088930102
             <button class="show-btn" onclick="copyAccount(this)">복사</button>
         </div>
     </div>
@@ -229,7 +229,7 @@ function toggleAccount(btn) {
 }
 
 function copyAccount(btn) {
-    const text = btn.parentElement.innerText.replace("복사","").trim();
+    const text = btn.parentElement.innerText.replace(/\D/g,""); // 숫자만 추출
     navigator.clipboard.writeText(text);
     alert("계좌번호가 복사되었습니다!");
 }
