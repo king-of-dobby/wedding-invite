@@ -40,8 +40,8 @@ body {
 .gold-strip { height: 8px; background-color:#e8d9b8; width:100%; }
 .main-image {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 700px;
+    object-fit: cover;
     display: block;
 }
 
@@ -71,7 +71,7 @@ body {
     opacity:0;
     animation:fadeInText 2s forwards;
     animation-delay:1.5s;
-    text-align:left; /* 왼쪽 정렬 */
+    text-align:left;
 }
 @keyframes fadeInText {0%{opacity:0; transform:translateY(20px);}100%{opacity:1; transform:translateY(0);}}
 
@@ -83,7 +83,8 @@ body {
 .account-box { background:#fff; border:1px solid #eee; border-radius:12px; padding:20px; margin:15px auto; max-width:500px; text-align:left; font-family:'Noto Serif KR', serif; box-shadow:0 0 8px rgba(0,0,0,0.05); }
 .account-box h3 { margin:0 0 15px; font-size:1.3rem; font-weight:600; font-family:'Playfair Display', serif; color:#3d3d3d; }
 .parent-line { display:flex; justify-content: space-between; align-items:center; font-size:1rem; margin:6px 0; flex-wrap:wrap; }
-.account-number { font-size:1.05rem; font-weight:600; margin-top:4px; text-align:right; }
+.account-number { font-size:1.05rem; font-weight:600; margin-top:4px; text-align:right; display:none; }
+.show-btn { margin-left:10px; padding:4px 8px; font-size:0.85rem; border-radius:5px; border:none; background:#e8d9b8; cursor:pointer; }
 
 /* 버튼 */
 .map-button, .share-btn { display:inline-block; margin-top:15px; padding:12px 20px; border-radius:8px; font-size:0.95rem; text-decoration:none; }
@@ -92,7 +93,7 @@ body {
 .share-btn { background:#e8d9b8; color:black; margin:5px; border:none; cursor:pointer; }
 
 /* 갤러리 */
-.swiper { width:95%; max-width:500px; height:auto; border-radius:12px; position:relative; margin:auto; }
+.swiper { width:95%; max-width:500px; height:380px; border-radius:12px; position:relative; margin:auto; }
 .swiper-slide img { width:100%; height:100%; object-fit:cover; border-radius:12px; }
 .swiper-button-next, .swiper-button-prev { color:#e8d9b8; }
 
@@ -106,6 +107,7 @@ body {
     .info-box { padding:15px; font-size:0.95rem; }
     .account-box { padding:15px; }
     .swiper { height:250px; }
+    .main-image { height:400px; }
 }
 </style>
 </head>
@@ -169,15 +171,23 @@ body {
     <div class="account-box">
         <h3>신랑측</h3>
         <div class="parent-line"><span>아버지 백청흠</span><span>신랑 백정환</span></div>
-        <div class="parent-line"><span>어머니 유옥자</span></div>
-        <div class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)</div>
+        <div class="parent-line"><span>어머니 유옥자</span>
+            <button class="show-btn" onclick="toggleAccount(this)">계좌 보기</button>
+        </div>
+        <div class="account-number">국민은행 078502-04-095454<br>(예금주: 백정환)
+            <button class="show-btn" onclick="copyAccount(this)">복사</button>
+        </div>
     </div>
 
     <div class="account-box">
         <h3>신부측</h3>
         <div class="parent-line"><span>아버지 윤석민</span><span>신부 윤지영</span></div>
-        <div class="parent-line"><span>어머니 김경미</span></div>
-        <div class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)</div>
+        <div class="parent-line"><span>어머니 김경미</span>
+            <button class="show-btn" onclick="toggleAccount(this)">계좌 보기</button>
+        </div>
+        <div class="account-number">우리은행 1002-088-930102<br>(예금주: 윤지영)
+            <button class="show-btn" onclick="copyAccount(this)">복사</button>
+        </div>
     </div>
 </div>
 
@@ -201,7 +211,28 @@ var swiper = new Swiper(".swiper", {
     pagination:{ el:".swiper-pagination" },
     navigation:{ nextEl:".swiper-button-next", prevEl:".swiper-button-prev" },
 });
-function copyURL() { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }
+
+function copyURL() {
+    navigator.clipboard.writeText(window.location.href);
+    alert("링크가 복사되었습니다!");
+}
+
+function toggleAccount(btn) {
+    const acc = btn.parentElement.nextElementSibling;
+    if (acc.style.display === "block") {
+        acc.style.display = "none";
+        btn.textContent = "계좌 보기";
+    } else {
+        acc.style.display = "block";
+        btn.textContent = "계좌 숨기기";
+    }
+}
+
+function copyAccount(btn) {
+    const text = btn.parentElement.innerText.replace("복사", "");
+    navigator.clipboard.writeText(text);
+    alert("계좌번호가 복사되었습니다!");
+}
 </script>
 
 </body>
