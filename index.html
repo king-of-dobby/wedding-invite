@@ -92,9 +92,9 @@ body {
 .share-area { margin-top:40px; }
 .share-btn { background:#e8d9b8; color:black; margin:5px; border:none; cursor:pointer; }
 
-/* 갤러리 */
-.swiper { width:95%; max-width:500px; height:380px; border-radius:12px; position:relative; margin:auto; }
-.swiper-slide img { width:100%; height:100%; object-fit:cover; border-radius:12px; }
+/* 갤러리 확대 */
+.swiper { width:95%; max-width:700px; height:450px; border-radius:12px; position:relative; margin:auto; }
+.swiper-slide img { width:100%; height:100%; object-fit:contain; border-radius:12px; }
 .swiper-button-next, .swiper-button-prev { color:#e8d9b8; }
 
 .footer { margin-top:40px; padding:20px; font-size:0.85rem; color:#aaa; }
@@ -229,7 +229,7 @@ function toggleAccount(btn) {
 }
 
 function copyAccount(btn) {
-    const text = btn.parentElement.innerText.replace("복사", "");
+    const text = btn.parentElement.innerText.replace("복사","").trim();
     navigator.clipboard.writeText(text);
     alert("계좌번호가 복사되었습니다!");
 }
