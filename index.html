@@ -6,7 +6,7 @@
 <title>우리의 결혼식</title>
 
 <!-- 고급 폰트 -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
 
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -36,8 +36,13 @@ body {
     margin-bottom: 30px;
 }
 
+/* 메인 사진 자동 비율 조정 */
 .main-image {
     width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
 }
 
 .info-box {
@@ -56,25 +61,37 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
+/* 혼주 글씨체 업그레이드 */
 .account-box {
     background: #ffffff;
     border: 1px solid #eee;
     border-radius: 12px;
     padding: 20px;
-    margin: 10px auto;
-    max-width: 480px;
+    margin: 15px auto;
+    max-width: 500px;
     text-align: left;
+    font-family: 'Noto Serif KR', serif;
 }
 
 .account-box h3 {
-    margin: 0 0 10px;
-    font-size: 1.2rem;
+    margin: 0 0 15px;
+    font-size: 1.3rem;
     font-weight: 600;
+    font-family: 'Playfair Display', serif;
 }
 
-.account-box p {
-    margin: 4px 0;
-    font-size: 0.95rem;
+/* 부모님 이름 + 신랑·신부 정보 오른쪽 배치 */
+.parent-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin: 6px 0;
+}
+
+.account-number {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
 }
 
 .map-button {
@@ -136,16 +153,12 @@ body {
         🕑 2026년 2월 28일 토요일<br>
         오후 2시 30분
     </p>
-
-    <a class="map-button" href="https://naver.me/xf5MWnIC" target="_blank">
-        네이버 지도 열기
-    </a>
+    <a class="map-button" href="https://naver.me/xf5MWnIC" target="_blank">네이버 지도 열기</a>
 </div>
 
 <!-- 갤러리 -->
 <div class="section">
     <div class="section-title">Gallery</div>
-
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="g1.jpg"></div>
@@ -155,7 +168,6 @@ body {
             <div class="swiper-slide"><img src="g5.jpg"></div>
             <div class="swiper-slide"><img src="g6.jpg"></div>
         </div>
-
         <div class="swiper-pagination"></div>
     </div>
 </div>
@@ -166,25 +178,42 @@ body {
 
     <div class="account-box">
         <h3>신랑측</h3>
-        <p>아버지 : 백청흠</p>
-        <p>어머니 : 유옥자</p>
-        <p><b>신랑 백정환</b> 국민은행<br>
-        078502-04-095454</p>
+
+        <div class="parent-line">
+            <span>아버지 백청흠</span>
+            <span>신랑 백정환</span>
+        </div>
+        <div class="parent-line">
+            <span>어머니 유옥자</span>
+ <p class="account-number">
+            국민은행 078502-04-095454<br>
+            (예금주: 백정환)
+        </p>
+        </div>
+
+       
     </div>
 
     <div class="account-box">
         <h3>신부측</h3>
-        <p>아버지 : 윤석민</p>
-        <p>어머니 : 김경미</p>
-        <p><b>신부 윤지영</b> 우리은행<br>
-        1002-088-930102</p>
+
+        <div class="parent-line">
+            <span>아버지 윤석민</span>
+            <span>신부 윤지영</span>
+        </div>
+        <div class="parent-line">
+            <span>어머니 김경미</span>
+                    <p class="account-number">
+            우리은행 1002-088-930102<br>
+            (예금주: 윤지영)
+        </p>
+        </div>
+
+
     </div>
 </div>
 
-<!-- footer -->
-<div class="footer">
-    © 2026 JH & JY Wedding Invitation
-</div>
+<div class="footer">© 2026 JH & JY Wedding Invitation</div>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
