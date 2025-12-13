@@ -31,21 +31,10 @@ body {
 .title { font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:10px; }
 .subtitle { font-size:1.2rem; color:#666; margin-bottom:30px; }
 
-/* 메인 이미지 */
-.main-image-wrapper {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
+.main-image-wrapper { position: relative; width: 100%; margin-bottom: 20px; }
 .gold-strip { height: 8px; background-color:#e8d9b8; width:100%; }
-.main-image {
-    width: 100%;
-    max-height: 520px;
-    object-fit: cover;
-    display: block;
-}
+.main-image { width: 100%; max-height: 520px; object-fit: cover; display: block; }
 
-/* 초대 텍스트 */
 .invite-text {
     font-family:'Playfair Display', serif;
     font-size:2.5rem;
@@ -53,13 +42,13 @@ body {
     text-shadow:0 0 10px rgba(0,0,0,0.15);
     opacity:0;
     animation: fadeInInvite 2s forwards 0.5s;
-    text-align:center;
-    margin-top:15px;
-    margin-bottom:30px;
+    margin:15px 0 30px;
 }
-@keyframes fadeInInvite {0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes fadeInInvite {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
 
-/* 인사말 */
 .info-box {
     background:#f7f5ef;
     padding:28px;
@@ -68,20 +57,13 @@ body {
     max-width:480px;
     line-height:1.8;
     font-size:0.92rem;
-    opacity:0;
-    animation:fadeInText 2s forwards;
-    animation-delay:1.5s;
-    text-align:left;
     border:1px solid #e1d7c6;
     box-shadow:0 0 10px rgba(0,0,0,0.05);
 }
-@keyframes fadeInText {0%{opacity:0; transform:translateY(20px);}100%{opacity:1; transform:translateY(0);}}
 
-/* 섹션 제목 */
-.section-title { font-size:1.6rem; margin-bottom:10px; font-family:'Playfair Display', serif; }
-.section-title-line { width:70px; height:3px; background:#e8d9b8; margin:10px auto 30px; border-radius:2px; }
+.section-title { font-size:1.6rem; font-family:'Playfair Display', serif; }
+.section-title-line { width:70px; height:3px; background:#e8d9b8; margin:10px auto 30px; }
 
-/* 혼주 & 계좌 정보 */
 .account-box {
     background:#fff;
     border:1px solid #eee;
@@ -90,42 +72,26 @@ body {
     margin:15px auto;
     max-width:500px;
     text-align:left;
-    font-family:'Noto Serif KR', serif;
-    box-shadow:0 0 8px rgba(0,0,0,0.05);
 }
-.account-box h3 { margin:0 0 15px; font-size:1.3rem; font-weight:600; font-family:'Playfair Display', serif; color:#3d3d3d; }
 .parent-line {
     display:flex;
     justify-content: space-between;
-    align-items:center;
-    font-size:1rem;
     margin:6px 0;
 }
-.account-number {
-    font-size:1.05rem;
-    font-weight:600;
-    margin-top:8px;
-    text-align:right;
-}
 
-/* 계좌번호 버튼 */
 .account-btn {
     background:#e8d9b8;
     padding:8px 13px;
     border-radius:6px;
-    display:inline-block;
     margin-top:6px;
     cursor:pointer;
-    font-size:0.95rem;
     border:none;
 }
 
-/* 갤러리 */
 .swiper {
     width:100%;
     max-width:600px;
-    height:auto;
-    padding: 0 5px;
+    padding:0 5px;
 }
 .swiper-slide img {
     width:100%;
@@ -133,38 +99,33 @@ body {
     object-fit:contain;
     border-radius:12px;
 }
-/* 좌우 화살표 제거 */
-.swiper-button-next, .swiper-button-prev { display:none; }
+.swiper-button-next,
+.swiper-button-prev { display:none; }
 
-/* 버튼 */
 .map-button, .share-btn {
     display:inline-block;
     margin-top:15px;
     padding:12px 20px;
     border-radius:8px;
-    font-size:0.95rem;
     text-decoration:none;
 }
 .map-button { background:black; color:white; }
-.share-btn { background:#e8d9b8; color:black; border:none; cursor:pointer; }
+.share-btn { background:#e8d9b8; border:none; cursor:pointer; }
 
-.footer { margin-top:40px; padding:20px; font-size:0.85rem; color:#aaa; }
+.footer { margin:40px 0 20px; font-size:0.85rem; color:#aaa; }
 </style>
 </head>
 
 <body>
 
-<!-- 메인 이미지 -->
 <div class="main-image-wrapper">
     <div class="gold-strip"></div>
-    <img src="main.jpg" class="main-image" alt="main">
+    <img src="main.jpg" class="main-image">
     <div class="gold-strip"></div>
 </div>
 
-<!-- 초대 텍스트 -->
 <div class="invite-text">초대합니다</div>
 
-<!-- 인사말 -->
 <div class="section">
     <div class="title">정환 & 지영</div>
     <div class="subtitle">2026년 2월 28일 (토) 오후 2시 30분</div>
@@ -176,101 +137,44 @@ body {
     </div>
 </div>
 
-<!-- 예식 정보 -->
-<div class="section">
-    <div class="section-title">💍Wedding Information</div>
-    <div class="section-title-line"></div>
-    <p style="font-size:1.1rem; line-height:1.8;">
-        📍 구로디지털단지 엘컨벤션<br>
-        🕑 2026년 2월 28일 토요일 오후 2시 30분
-    </p>
-    <a class="map-button" href="https://naver.me/xf5MWnIC" target="_blank">네이버 지도 열기</a>
-</div>
-
-<!-- 갤러리 -->
 <div class="section">
     <div class="section-title">Gallery</div>
     <div class="section-title-line"></div>
+
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="g1.jpg"></div>
-            <div class="swiper-slide"><img src="g2.jpg"></div>
-            <div class="swiper-slide"><img src="g3.jpg"></div>
-            <div class="swiper-slide"><img src="g4.jpg"></div>
-            <div class="swiper-slide"><img src="g5.jpg"></div>
-            <div class="swiper-slide"><img src="g6.jpg"></div>
+            <div class="swiper-slide">
+                <a href="g1.jpg" target="_blank"><img src="g1.jpg"></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="g2.jpg" target="_blank"><img src="g2.jpg"></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="g3.jpg" target="_blank"><img src="g3.jpg"></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="g4.jpg" target="_blank"><img src="g4.jpg"></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="g5.jpg" target="_blank"><img src="g5.jpg"></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="g6.jpg" target="_blank"><img src="g6.jpg"></a>
+            </div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
 </div>
 
-<!-- 혼주 & 계좌 정보 -->
-<div class="section">
-    <div class="section-title">마음 전하실 곳</div>
-    <div class="section-title-line"></div>
-
-    <div class="account-box">
-        <h3>신랑측</h3>
-        <div class="parent-line"><span>아버지 백청흠</span><span>🤵‍♂️신랑 백정환</span></div>
-        <div class="parent-line"><span>어머니 유옥자</span></div>
-        <div class="account-number" style="display:none;" id="account1">
-            국민은행 078502-04-095454<br>(예금주: 백정환)
-        </div>
-        <button class="account-btn" onclick="toggleAccount('account1')">계좌 보기</button>
-        <button class="account-btn" onclick="copyNumber('07850204095454')">복사</button>
-    </div>
-
-    <div class="account-box">
-        <h3>신부측</h3>
-        <div class="parent-line"><span>아버지 윤석민</span><span>👰‍♀️신부 윤지영</span></div>
-        <div class="parent-line"><span>어머니 김경미</span></div>
-        <div class="account-number" style="display:none;" id="account2">
-            우리은행 1002-088-930102<br>(예금주: 윤지영)
-        </div>
-        <button class="account-btn" onclick="toggleAccount('account2')">계좌 보기</button>
-        <button class="account-btn" onclick="copyNumber('1002088930102')">복사</button>
-    </div>
-</div>
-
-<!-- 공유하기 -->
-<div class="section share-area">
-    <div class="section-title">공유하기</div>
-    <div class="section-title-line"></div>
-    <button class="share-btn" onclick="copyURL()">링크 복사</button>
-</div>
-
 <div class="footer">© 2026 JH & JY Wedding Invitation</div>
 
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-/* Swiper 초기화 */
-var swiper = new Swiper(".swiper", {
+new Swiper(".swiper", {
     loop:true,
-    slidesPerView:1,
-    spaceBetween:10,
-    grabCursor:true,
-    autoplay: { delay:3000, disableOnInteraction:false },
+    autoplay:{ delay:3000, disableOnInteraction:false },
     pagination:{ el:".swiper-pagination", clickable:true }
 });
-
-/* 계좌 보기/숨기기 */
-function toggleAccount(id) {
-    const el = document.getElementById(id);
-    el.style.display = (el.style.display === "none") ? "block" : "none";
-}
-
-/* 계좌번호 복사 */
-function copyNumber(num) {
-    navigator.clipboard.writeText(num);
-    alert("계좌번호가 복사되었습니다!");
-}
-
-/* 링크 복사 */
-function copyURL() {
-    navigator.clipboard.writeText(window.location.href);
-    alert("링크가 복사되었습니다!");
-}
 </script>
 
 </body>
